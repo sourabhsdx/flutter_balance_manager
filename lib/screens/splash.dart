@@ -24,7 +24,9 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.account_balance_wallet,size: 100,color: Colors.white,),
+              Hero(
+                tag: "logoIcon",
+                  child: Icon(Icons.account_balance_wallet,size: 100,color: Colors.white,)),
               Text("Balance Manager",style: Theme.of(context).textTheme.headline5,),
               SizedBox(height: 10,),
               CircularProgressIndicator()
