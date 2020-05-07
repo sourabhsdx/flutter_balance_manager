@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttermanagebalance/constants.dart';
 
 import 'components/wallet_card.dart';
 
@@ -45,45 +46,71 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingAddWallet(),
+      floatingActionButton: FloatingAddWallet(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
     );
   }
 }
 
 class FloatingAddWallet extends StatelessWidget {
+  FloatingAddWallet({this.onPressed});
+  final Function onPressed;
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
-        onPressed: (){
-          showBottomSheet(context: context,
-              builder: (context){
+        onPressed: () {
+          showBottomSheet(
+              context: context,
+              builder: (context) {
                 return Container(
                   height: 400,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(topRight:Radius.circular(20),topLeft: Radius.circular(20)),
-                      border: Border.all(color: Colors.green)
+                    border: Border.all(color: Colors.green),
+                    borderRadius: BorderRadius.circular(20)
+
                   ),
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Form(
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 20,),
+                          SizedBox(
+                            height: 30,
+                          ),
                           TextField(
-                            decoration: InputDecoration(
-                              labelText: "Wallet Name",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              disabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8)
-                              ),
-                              fillColor: Colors.green,
-                              focusColor: Colors.green,
-                              hoverColor: Colors.green
+                            decoration:
+                                kInputBox.copyWith(labelText: "Wallet Name"),
+                            onChanged: (value){
+                              print(value);
+                            },
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextField(
+                            decoration: kInputBox,
+                              onChanged: (value){
+                                print(value);
+                              }
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          RaisedButton(
+                            padding: EdgeInsets.all(20),
+                            color: Colors.green,
+                            onPressed: () {},
+                            child: Text(
+                              "Add Wallet",
+                              style: Theme.of(context).textTheme.headline5,
                             ),
+                            elevation: 10,
+                            onLongPress: onPressed,
                           )
                         ],
                       ),
@@ -107,4 +134,3 @@ class FloatingAddWallet extends StatelessWidget {
         ));
   }
 }
-

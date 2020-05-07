@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WalletCard extends StatelessWidget {
@@ -9,9 +10,62 @@ class WalletCard extends StatelessWidget {
         showBottomSheet(context: context,
             builder: (context){
           return Container(
-            height: 400,
+            height: MediaQuery.of(context).size.height*0.7,
             width: MediaQuery.of(context).size.width,
-            color: Colors.green,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              color: Colors.white,
+              border: Border.all(color: Colors.blue, width: 4)
+            ),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 30,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    RaisedButton(
+                      onPressed: (){},
+                      elevation: 10,
+                      color: Colors.green,
+                      padding: EdgeInsets.all(10),
+                      child: Text("Add Amount",style: Theme.of(context).textTheme.headline5,),
+                    ),
+                    RaisedButton(
+                      onPressed: (){},
+                      elevation: 10,
+                      color: Colors.red,
+                      padding: EdgeInsets.all(10),
+                      child: Text("Add Amount", style: Theme.of(context).textTheme.headline5,),
+
+                    )
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Expanded(
+                  flex: 1,
+                  child: ListView(
+                    children: <Widget>[
+                      Material(
+                        elevation: 5,
+                        child: ListTile(
+                          leading: Icon(Icons.attach_money),
+                          title: Text("Balance Deducted"),
+                          trailing: Text("+ 100.00"),
+                        ),
+                      ),
+                      Material(
+                        elevation: 5,
+                        child: ListTile(
+                          leading: Icon(Icons.attach_money),
+                          title: Text("Balance Deducted"),
+                          trailing: Text("- 100.00"),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           );
             });
       },
