@@ -26,16 +26,22 @@ class WalletCard extends StatelessWidget {
                     RaisedButton(
                       onPressed: (){},
                       elevation: 10,
-                      color: Colors.green,
                       padding: EdgeInsets.all(10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      color: Colors.green,
                       child: Text("Add Amount",style: Theme.of(context).textTheme.headline5,),
                     ),
                     RaisedButton(
                       onPressed: (){},
                       elevation: 10,
                       color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
                       padding: EdgeInsets.all(10),
-                      child: Text("Add Amount", style: Theme.of(context).textTheme.headline5,),
+                      child: Text("Deduct Amount", style: Theme.of(context).textTheme.headline5,),
 
                     )
                   ],
