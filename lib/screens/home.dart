@@ -102,6 +102,9 @@ class FloatingAddWallet extends StatelessWidget {
                             height: 20,
                           ),
                           RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)
+                            ),
                             padding: EdgeInsets.all(20),
                             color: Colors.green,
                             onPressed: () {},
